@@ -21,7 +21,7 @@ The app lets you:
 ## ⚙️ Features
 
 - 🔸 Trainable word **embeddings** (`nn.Embedding`)
-- 🔸 Fully connected **MLP** with ReLU and Dropout
+- 🔸 Fully connected **MLP** with ReLU or tanh activation function
 - 🔸 Tokenization and vocabulary built from Sherlock Holmes corpus
 - 🔸 Streamlit interface for real-time interaction
 
@@ -49,21 +49,19 @@ The app lets you:
 ### 3. PyTorch Skeleton:
 
 ```python
-class NextWordMLP(nn.Module):
-    def __init__(self, block_size, vocab_size, emb_dim, hidden_dim):
+class NextWord(nn.Module):
+    def __init__(self, block_size, vocab_size, emb_dim, hidden_size=1024):
         super().__init__()
-        self.embedding = nn.Embedding(vocab_size, emb_dim)
-        self.net = nn.Sequential(
-            nn.Linear(block_size * emb_dim, hidden_dim),
-            nn.ReLU(),
-            nn.Dropout(0.2),
-            nn.Linear(hidden_dim, vocab_size),
-        )
+        self.emb = nn.Embedding(vocab_size, emb_dim)
+        self.lin1 = nn.Linear(block_size * emb_dim, hidden_size)
+        self.lin2 = nn.Linear(hidden_size, vocab_size)
 
     def forward(self, x):
-        emb = self.embedding(x)            # (B, block_size, emb_dim)
-        flat = emb.view(x.size(0), -1)     # (B, block_size * emb_dim)
-        return self.net(flat)              # (B, vocab_size)
+        x = self.emb(x)
+        x = x.view(x.shape[0], -1)
+        x = torch.tanh(self.lin1(x))  # Use tanh or relu activation
+        x = self.lin2(x)
+        return x
 
 ## 📁 Repository Structure
 
