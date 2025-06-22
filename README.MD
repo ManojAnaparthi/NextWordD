@@ -13,7 +13,7 @@ This project demonstrates that even without RNNs or Transformers, meaningful lan
 The app lets you:
 - Select a **block size** (context length)
 - Tune the **embedding dimension**
-- Generate one word at a time from a live MLP model
+- Generate words from a live MLP model
 - Observe how the model behaves with different hyperparameters
 
 ---
