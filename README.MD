@@ -20,10 +20,10 @@ The app lets you:
 
 ## ⚙️ Features
 
-- 🔸 Trainable word **embeddings** (`nn.Embedding`)
-- 🔸 Fully connected **MLP** with ReLU or tanh activation function
-- 🔸 Tokenization and vocabulary built from Sherlock Holmes corpus
-- 🔸 Streamlit interface for real-time interaction
+- Trainable word **embeddings** (`nn.Embedding`)
+- Fully connected **MLP** with ReLU or tanh activation function
+- Tokenization and vocabulary built from Sherlock Holmes corpus
+- Streamlit interface for real-time interaction
 
 ---
 
@@ -46,7 +46,7 @@ context (N word indices)
    Linear → ReLU → Dropout → Linear
            ↓
    logits over vocabulary
-text```
+```text
 
 ### 3. PyTorch Skeleton:
 
