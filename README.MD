@@ -46,7 +46,7 @@ context (N word indices)
    Linear → ReLU → Dropout → Linear
            ↓
    logits over vocabulary
-```text
+```
 
 ### 3. PyTorch Skeleton:
 
@@ -64,6 +64,7 @@ class NextWord(nn.Module):
         x = torch.tanh(self.lin1(x))  # Use tanh or relu activation
         x = self.lin2(x)
         return x
+```
 
 ## 📁 Repository Structure
 
