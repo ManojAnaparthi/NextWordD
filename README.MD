@@ -35,8 +35,7 @@ The app lets you:
 - Inputs: sliding window of `block_size` words → target: next word
 
 ### 2. Model Architecture
-```text
-[ context (N word indices) ]
+context (N word indices)
            ↓
    Embedding Layer
            ↓
@@ -44,7 +43,7 @@ The app lets you:
            ↓
    Linear → ReLU → Dropout → Linear
            ↓
- [ logits over vocabulary ]
+   logits over vocabulary
 
 ### 3. PyTorch Skeleton:
 
